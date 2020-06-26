@@ -10,6 +10,16 @@ if (i == 0) {
 };
 ```
 
+### ?!
+```c#
+let i = { let opt = OptionallyInt()
+            ? ret opt.V()
+            ! ret 0
+        };
+
+let j = OptionallyInt() ?! ret 0;
+```
+
 ### switch-case
 ```cpp
 switch (w) {
