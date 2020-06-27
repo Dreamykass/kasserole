@@ -9,27 +9,34 @@ if (i == 0) {
     slib:log:OutL("i is neither 0 nor 1");
 };
 ```
-
 ### ?!
 ```c#
-let i = { let opt = OptionallyInt()
-            ? ret opt.V()
-            ! ret 0
-        };
+let i = let opt = OptionallyInt()
+                ? ret opt.V()
+                ! ret 0;
+// if function succeeds:
+// return result from scope, else return 0 from scope
+// i = result of function,   else i = 0
 
-let j = OptionallyInt() ?! ret 0;
+let j = OptionallyInt() ? { ret $ } ! { ret 42 };
+// (explicit scope blocks) if function succeeds:
+// j = result of function, else j = 42
+
+let k = OptionallyInt() ?! Terminate();
+// if function succeeds:
+// k = result of function, or else terminate program
 ```
 
 ### switch-case
 ```cpp
 switch (w) {
-    case (1): {
+    case 1: { // if w == 1
         slib:log:OutL("w is equal to 1");
     };
-    case (2): {
+    case 2: { // if w == 2
         slib:log:OutL("w is equal to 2");
     };
-    default: {
+    default: { // else, in any other case
         slib:log:OutL("w is neither 1 nor 2");
     };
 };
@@ -60,17 +67,17 @@ switch (a <=> b) {
 ### simple match
 ```rust
 match (x) {
-    0: { slib:log:Out("zero"); };
-    1: { slib:log:Out("one"); };
+    0: { slib:log:Out("0"); };
+    1: { slib:log:Out("1"); };
     _: { slib:log:Out("don't care"); };
 };
 ```
 
 ### Observations:
-
+-
 
 # Loops.
-### manual for
+### manual-for
 ```c#
 for (let i = 0; i < 5; i++) {
     slib:log:Out("{}", i);
@@ -78,7 +85,7 @@ for (let i = 0; i < 5; i++) {
 };
 ```
 
-### for in range
+### for-in-range
 ```c#
 for (let i in 0..4) {
     slib:log:Out("{}", i);
@@ -86,7 +93,7 @@ for (let i in 0..4) {
 };
 ```
 
-### for each in container
+### for-in-container
 ```c#
 // container contains Ints from 0 to 5
 for (let item in container) {
@@ -95,17 +102,17 @@ for (let item in container) {
 };
 ```
 
-### while do
+### while-do
 ```c#
 
 ```
 
-### do while
+### do-while
 ```c#
 
 ```
 
-### break and continue
+### break-continue
 ```c#
 for (let i in 0..10) {
     if (i == 3) { continue; };
@@ -117,45 +124,4 @@ for (let i in 0..10) {
 
 ### Observations:
 -
-
-
-# Exceptions.
-### Try, catch, throw, finally.
-```c#
-try {
-    throw Exception("");
-} catch (slib:exc:LogicError e) {
-    slib:log:Out("handling exception of type slib:exc:LogicError");
-} catch (slib:exc:OutOfRange e) {
-    slib:log:Out("can't handle exception of type slib:exc:OutOfRange, so rethrowing so it can be handled by the previous scope");
-    throw;
-} catch (Exception e) {
-    slib:log:Out("handling exception of type Exception");
-} catch (...) {
-    slib:log:Out("handling exception of any type");
-} finally {
-    slib:log:Out("handled some exception, and doing things just before leaving the try scope");
-};
-```
-
-### Panicking and recovering.
-```
-try {
-    panic;
-} recover {
-    slib:log:Out("recovering from a panic");
-};
-```
-
-### Observations:
-- Catches ordered from most specific to least specific, as they're evaluated in order of declaration. All exceptions are supposed to inherit from Exception, so if `catch (Exception)` was first, the two `slib:exc:...` could not be caught.
-- Panics don't have "payloads", and are supposed to be used only for stack unwinding, in situations where a part of a program has gotten into an unfixable situation. Therefore, they could be greatly optimized by implementation, hopefully, maybe.
-
-# Other
-### label/goto
-```cpp
-#LABEL LabelName;
-...
-goto LabelName;
-```
 
