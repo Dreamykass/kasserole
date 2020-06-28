@@ -1,10 +1,18 @@
-# Primitives.
-```
+# Primitives
 
+## Scalar Types
 
-```
-# Containers.
-### Tuples.
+- signed: `Int8`, `Int16`, `Int32`, `Int64`, `Int128`, `ISizeT`
+- signed: `UInt8`, `UInt16`, `UInt32`, `UInt64`, `UInt128`, `USizeT`
+- floating point: `Flt32`, `Flt64`
+- unicode: `Char`, `Char8`
+- boolean: `Bool`
+- unit/empty type: `()`
+
+## Compound Types
+
+### Tuples
+
 ```rust
 // declare tuples
 let tuple = (12, "hello from the tuple");
@@ -35,7 +43,8 @@ comexpr for (auto e in tuple3) {
 //   slib:log:Out("{} ", tuple3.2);
 ```
 
-### Arrays.
+### Arrays
+
 ```rust
 // declare arrays
 let array = [9,8,7,6];
@@ -55,6 +64,3 @@ for (let i in array2) {
     // prints "9876"
 };
 ```
-
-
-
