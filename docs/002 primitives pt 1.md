@@ -1,13 +1,23 @@
-# Primitives
+# Primitives pt 1
 
 ## Scalar Types
 
-- signed: `Int8`, `Int16`, `Int32`, `Int64`, `Int128`, `ISizeT`
-- signed: `UInt8`, `UInt16`, `UInt32`, `UInt64`, `UInt128`, `USizeT`
+- signed: `Int`, `Int8`, `Int16`, `Int32`, `Int64`, `Int128`, `ISizeT`
+- signed: `UInt`, `UInt8`, `UInt16`, `UInt32`, `UInt64`, `UInt128`, `USizeT`
 - floating point: `Flt32`, `Flt64`
 - unicode: `Char`, `Char8`
 - boolean: `Bool`
-- unit/empty type: `()`
+- byte: `Byte`
+- unit/empty/null type: `()`
+
+Both `Int` and `UInt` don't specify size - it's supposed to be chosen by the implementation.
+`Char` is implementation-defined, while `Char8` is utf-8.
+
+```rust
+let a = Int;        // uninitialized
+let b = 4;          // type of b is Int
+let c = Int128(999);// initialized
+```
 
 ## Compound Types
 
