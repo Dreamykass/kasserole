@@ -54,8 +54,8 @@ fun IfWeaklyEqual(a String, b String)->Bool {
     ret a |> ToUpper
 };
 
-let result = "hello"
-    |> ToUpper()
+let result = "hello";
+    |> ToUpper();
     |> Trim();
 
 // equal to:

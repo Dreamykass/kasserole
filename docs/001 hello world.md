@@ -3,7 +3,7 @@
 ## Main
 
 ```cpp
-import slib:log;
+import slib:fmt;
 
 fun Main()->int {
     slib:PrintLn("Hello World!");
@@ -17,7 +17,7 @@ fun Main()->int {
 - `fun`: Keyword, declares a function. See "basic constructs".
 - `->int`: Return type of a function. See "basic constructs".
 - `;`: Terminator, scope-ender. See "scopes".
-- `slib:log:OutL()`: Call of a function from the `slib:log` space, that's in the `log` module in `slib` module. Function `OutL()` writes the argument(s) in a new line, to the console. See "modules and slib".
+- `slib:PrintLn()`: Call of a function from the `slib:log` space, that's in the `log` module in `slib` module. Function `OutL()` writes the argument(s) in a new line, to the console. See "modules and slib".
 - `ret 0`: Keyword `ret` that returns an object from a scope/function. No semicolon, because the object leaves that scope/function. See "basic constructs".
 
 ## Style
@@ -28,35 +28,10 @@ fun Main()->int {
 - preprocessor: `#SHOUTY_SNAKE_CASE`
 - code generation: `@PascalCase`
 
-### hmm
+### names
 
-- types: `PascalCase` (or `alllowercase` if a short primitive)
+- types: `PascalCase`
 - functions: `PascalCase`
 - local objects: `snake_case`
 - member objects: `m_snake_case`
 - argument objects: `_snake_case`
-
-## Punctuation
-
-### language2
-
-- `#` - preprocessor (prep)
-- `@` - code generation (cgen)
-
-### hmm2
-
-- `;` - terminator, scope-ender
-- `<>` - code generation arguments
-- `()` - runtime call operator
-- `,` - argument separator
-
-### uhh
-
-- `&` - reference?
-- `*` - pointer, dereference
-- `.` - direct access
-- `->` - indirect access
-
-### other
-
-- `_` - discarder

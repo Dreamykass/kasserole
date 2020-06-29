@@ -2,21 +2,24 @@
 
 ## Scalar Types
 
-- signed: `Int`, `Int8`, `Int16`, `Int32`, `Int64`, `Int128`, `ISizeT`
-- signed: `UInt`, `UInt8`, `UInt16`, `UInt32`, `UInt64`, `UInt128`, `USizeT`
+- signed integers: `Int`, `Int8`, `Int16`, `Int32`, `Int64`, `Int128`, `ISizeT`
+- unsigned integers: `UInt`, `UInt8`, `UInt16`, `UInt32`, `UInt64`, `UInt128`, `USizeT`
 - floating point: `Flt32`, `Flt64`
 - unicode: `Char`, `Char8`
 - boolean: `Bool`
 - byte: `Byte`
-- unit/empty/null type: `()`
+- empty-type: `()`
+- no-type: `void`
+- no-value: `null`
 
 Both `Int` and `UInt` don't specify size - it's supposed to be chosen by the implementation.
 `Char` is implementation-defined, while `Char8` is utf-8.
 
 ```rust
-let a = Int;        // uninitialized
-let b = 4;          // type of b is Int
-let c = Int128(999);// initialized
+let a = Int;              // uninitialized
+let b = 4;                // type of b is Int
+let c = Int128:(999);     // initialized
+let d = Int128:New(1001); // same as above
 ```
 
 ## Compound Types
