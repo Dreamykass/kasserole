@@ -58,7 +58,7 @@ let result = "hello";
     |> ToUpper();
     |> Trim();
 
-// equal to:
+// equivalent to:
 let result = "hello";
     result.ToUpper();
     result.Trim();

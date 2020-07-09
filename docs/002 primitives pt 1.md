@@ -2,10 +2,10 @@
 
 ## Scalar Types
 
-- signed integers: `Int`, `Int8`, `Int16`, `Int32`, `Int64`, `Int128`, `ISizeT`
-- unsigned integers: `UInt`, `UInt8`, `UInt16`, `UInt32`, `UInt64`, `UInt128`, `USizeT`
+- signed integers: `Int`, `Int8`, `Int16`, `Int32`, `Int64`, `Int128`, `ISize`
+- unsigned integers: `UInt`, `UInt8`, `UInt16`, `UInt32`, `UInt64`, `UInt128`, `USize`
 - floating point: `Flt32`, `Flt64`
-- unicode: `Char`, `Char8`
+- text: `Char`, `Ascii`
 - boolean: `Bool`
 - byte: `Byte`
 - empty-type: `()`
@@ -13,7 +13,6 @@
 - no-value: `null`
 
 Both `Int` and `UInt` don't specify size - it's supposed to be chosen by the implementation.
-`Char` is implementation-defined, while `Char8` is utf-8.
 
 ```rust
 let a = Int;              // uninitialized
@@ -29,6 +28,7 @@ let d = Int128:New(1001); // same as above
 ```rust
 // declare tuples
 let tuple = (12, "hello from the tuple");
+let explicit_tuple = Tup(45, "heyo");
 let uninitialized_tuple = Tup<Int64, Str>;
 let one_element_tuple = (9.9,);
 
@@ -43,17 +43,6 @@ let tuple2 = tuple;
 let (i, s) = tuple2;
 i = 99;
 s = "escape from new tuple";
-
-// operate on every element of a tuple
-let tuple3 = (1, 10.9, "foo");
-comexpr for (auto e in tuple3) {
-    slib:log:Out("{} ", e);
-    // prints "1 10.9 foo "
-};
-// equivalent to:
-//   slib:log:Out("{} ", tuple3.0);
-//   slib:log:Out("{} ", tuple3.1);
-//   slib:log:Out("{} ", tuple3.2);
 ```
 
 ### Arrays
@@ -61,8 +50,9 @@ comexpr for (auto e in tuple3) {
 ```rust
 // declare arrays
 let array = [9,8,7,6];
+let explicit_array = Arr<Int64>:New(1,2,3,4);
 let uninitialized_array = Arr<Int64, 4>;
-let one_element_array = [9.9,];
+let one_element_array = [13,];
 
 // access elements of the array
 uninitialized_array.0 = 44;
@@ -73,7 +63,7 @@ let array2 = array;
 
 // for-in-container
 for (let i in array2) {
-    slib:log:Out("{}", v);
+    slib:Print("{}, ", v);
     // prints "9876"
 };
 ```

@@ -1,6 +1,6 @@
 # Primitives pt 2
 
-## Unions
+## (Tagged) Unions
 
 ```rust
 // declare name of the union and its variants
@@ -15,10 +15,10 @@ type Packet: union {
 };
 
 // declaration of variable
-let u1 = Packet;      // uninitialized - allowed because of ()
+let u1 = Packet;      // empty
 let u2 = Packet:Quit; // initialized with v. Quit
-u2 = Packet:Write(String:New("hello")); // with v. Write
-u2 = Packet:Color((255,0,0));           // with v. Color
+u2 = Packet:Write(String:New("hello")); // changed to Write v.
+u2 = Packet:Color((255,0,0));           // changed to Color v.
 ```
 
 ## Raw Pointers and Raw Arrays
