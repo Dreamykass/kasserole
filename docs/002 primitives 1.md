@@ -19,6 +19,7 @@ let a = Int;              // uninitialized
 let b = 4;                // type of b is Int
 let c = Int128:(999);     // initialized
 let d = Int128:New(1001); // same as above
+let e Int64 = 32;         // explicit type
 ```
 
 ## Compound Types
