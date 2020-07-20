@@ -56,7 +56,7 @@ let fruits = [
   "mango",
   "melon",
   "grape",
-]
+];
 ```
 
 ## A different solution
