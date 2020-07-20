@@ -30,6 +30,6 @@ fun Main() {
 };
 ```
 
-The idea: Very nice for small and quick functions and the like. The more complex the templated code, the better it is to explicitly define the required concepts. 
+The idea: Very nice for small and quick functions and the like. The more complex the templated code, the better it is to explicitly define the required concepts.
 
 Additionally, after the auto-code is written, as the user, it's very easy to see what concepts the compiler/IDE has generated for the code.
