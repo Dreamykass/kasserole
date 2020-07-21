@@ -4,7 +4,7 @@
 
 ```rust
 // declare name of the union and its variants
-type Packet: union {
+typ Packet: union {
     (),                     // empty v. (variant)
     Quit,                   // v. with no data
     Quit2: (),              // above is same as this
