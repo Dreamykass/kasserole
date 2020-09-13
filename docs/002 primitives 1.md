@@ -12,8 +12,6 @@
 - no-type: `void`
 - no-value: `null`
 
-Both `Int` and `UInt` don't specify size - it's supposed to be chosen by the implementation.
-
 ```rust
 let a = Int;              // uninitialized
 let b = 4;                // type of b is Int
