@@ -1,4 +1,4 @@
-# Code Generation
+# Macros 3
 
 ## The problem
 
@@ -16,7 +16,7 @@ Just have a function that reads strings from a file. Not really all that optimal
 let fruits = ReadFruitsFromFile();
 ```
 
-## Code generation
+## Macro solution
 
 The better (in some situations) alternative is code generation (codegen). It runs at compile-time. It's a scripting language, with different syntax from the actual code.
 
