@@ -3,26 +3,22 @@
 ## Main
 
 ```cpp
-import slib:fmt;
-
-fun Main()->int {
-    slib:PrintLn("Hello World!");
-    ret 0
-};
+fun main() {
+    #print("Hello World!"); // prints "Hello World!"
+}
 ```
 
 ## Style
 
-### language
+### Language
 
-- keywords: `snake_case` (or `alllowercase` if short)
-- preprocessor: `#SHOUTY_SNAKE_CASE`
-- code generation: `@PascalCase`
+- keywords: `snake_case`
+- declarative macros: `#kebab-case`
+- procedural macros: `#[kebab-case]`
+- code generation: `@[PascalCase]`
 
-### names
+### Names
 
 - types: `PascalCase`
-- functions: `PascalCase`
-- local objects: `snake_case`
-- member objects: `m_snake_case`
-- argument objects: `_snake_case`
+- functions: `snake_case`
+- variables: `snake_case`
