@@ -19,18 +19,16 @@ ope add_5_prefix:  { prefix add_5,  }
 ope add_5_postfix: { postfix add_5, }
 
 
-// operator use
-fun main() {
-    let a = 12 add 20; // evaluates to `= add(12, 20);`
 
-    #print("{}", a);   // prints "32"
+let a = 12 add 20; // evaluates to `= add(12, 20);`
 
-    let c = add_5_prefix 10;  // evaluates to `= add_5(10);`
-    let d = 55 add_5_postfix; // evaluates to `= add_5(55);`
+#print("{}", a);   // prints "32"
 
-    #print("{}", c);   // prints "15"
-    #print("{}", d);   // prints "60"
-}
+let c = add_5_prefix 10;  // evaluates to `= add_5(10);`
+let d = 55 add_5_postfix; // evaluates to `= add_5(55);`
+
+#print("{}", c);   // prints "15"
+#print("{}", d);   // prints "60"
 ```
 
 ## Combined with overloading
@@ -55,19 +53,18 @@ ope sum: {
     prefix sum,
 }
 
-// advanced operator use
-fun main() {
-    let a = sum 1 1 1;
-    // the above evalates to `= sum(1, 1, 1);`
-    // which further evaluates to `= sum_3(1, 1, 1);`
 
-    let b = sum 1 2 3 sum 10 40;
-    // same as `= sum(1, 2, 3, sum(10, 40));`
-    // and `= sum_4(1, 2, 3, sum_2(10, 40));`
 
-    #print("{}", a);   // prints "3"
-    #print("{}", b);   // prints "60"
-}
+let a = sum 1 1 1;
+// the above evalates to      `= sum  (1, 1, 1);`
+// which further evaluates to `= sum_3(1, 1, 1);`
+
+let b = sum 1 2 3 sum 10 40;
+// same as `= sum  (1, 2, 3, sum  (10, 40));`
+// and     `= sum_4(1, 2, 3, sum_2(10, 40));`
+
+#print("{}", a);   // prints "3"
+#print("{}", b);   // prints "60"
 ```
 
 ## Concise declaration
@@ -79,10 +76,8 @@ ope div: {
     // the above is an anonymous function
 }
 
-fun main() {
-    let a = 10 5 postfix;
-    #print("{}", a);   // prints "2"
-}
+let a = 10 5 postfix;
+#print("{}", a);   // prints "2"
 ```
 
 ## Custom symbols
@@ -97,9 +92,18 @@ ope 'd': { prefix display, }
 ope 'Δ': { prefix display, } 
 ope '📺': { prefix display, }
 
-fun main() {
-    d 5;    // prints "5"
-    Δ 12;   // prints "12"
-    📺 63;  // prints "63"
-}
+
+
+d 5;    // prints "5"
+Δ 12;   // prints "12"
+📺 63;  // prints "63"
+```
+
+## Complex operators
+
+```rust
+let x = 436 y.!<Bool> 563 3257 1254;
+// operators can be arbitrarily composed from other language features;
+// an operator can be a method on some type, can be generic,
+// or it could return another operator
 ```

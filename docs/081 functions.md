@@ -1,6 +1,8 @@
 
 # Functions
 
+## Basic functions
+
 ```rust
 // function declaration
 fun multiplied(a: I32, b: I32) -> I32 {
@@ -37,15 +39,23 @@ fun display(x: I32) { // same as `-> Unit`
 }
 ```
 
+
 ## Anonymous functions
 
 ```rust 
-fun main() {
-    let a = fn _(arg: I32) -> I32 { arg + 10 } (2);
-    // the anonymous function is immediately called
+let a = fun _(arg: I32) -> I32 { arg + 10 } (2);
+// the anonymous function is immediately called
 
-    #print("{}", a);  // prints "12"
-}
-
+#print("{}", a);  // prints "12"
 ```
 
+
+## Call with named parameters
+
+```rust
+fun times_two(parameter: I32) -> I32 { parameter * 2 };
+
+let r = times_two(parameter = 34);
+
+#print("{}", r); // prints "68"
+```

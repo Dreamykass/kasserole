@@ -1,6 +1,4 @@
-# Unions and Pointers
-
-## (Tagged) Unions
+# Unions
 
 ```rust
 // declare the union and its variants
@@ -22,8 +20,3 @@ let u4 = Packet:Color:((255,0,0));        // init from the Color variant
 let u5 = Packet:Color:new((128,128,128)); // same as above
 ```
 
-## Raw Pointers
-
-```rust
-
-```

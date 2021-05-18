@@ -10,8 +10,8 @@ let b = &a;         // b is an immutable reference
 
 let c: &I32 = &a;   // same as above, but explicitly typed
 
-let d = *c;         // dereferences c
-                    // &I32 into just I32
+let d = *c;         // dereferences &I32 into just I32
+                    // and create a new variable from that value
 
 #print("{}", a);    // prints "23"
 #print("{}", *c);   // same as above
@@ -32,16 +32,19 @@ a = a * 2;
 
 ## References and mutability
 ```rust
-let a = 12;
+let $a = 12;        // a is a mutable object
 
 let b = &a;         // b is an immutable reference to an immutable object
+
 // *b = 2356;       // not allowed! can't mutate an object
                     // through a reference to an immutable object
 
 let c = &$a;        // immutable reference to a mutable object
                     // a is mutably borrowed by c
 
-*c = 996;
+*c = 996;           // dereference $&I32 into just $I32
+                    // and mutate it
+
 #print("{}", *c);   // prints "996"
 #print("{}", a);    // prints "996"
 ```

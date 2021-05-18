@@ -22,15 +22,13 @@ fun half_f(a: F32) -> F32 {
 
 // overload declaration
 ove half: { // overload needs to have an unique name
-    half_i,
-    half_f,
+    half_i, // and needs to be composed
+    half_f, // from actual, unique functions
 }
 
-// overload use
-fun main() {
-    #print("{}", half(10));     // calls half_i, prints "5"
-    #print("{}", half(888.8));  // calls half_f, prints "444.4"
-}
+
+#print("{}", half(10));     // calls half_i, prints "5"
+#print("{}", half(888.8));  // calls half_f, prints "444.4"
 ```
 
 ## Overload variants
@@ -46,18 +44,18 @@ ove zero: {
     zero_f,
 }
 
-fun main() {
-    // #print("{}", zero());    // error!
-                                // ambigious overload call
 
-    // let a = zero();          // error!
-                                // also an ambigious overload call
 
-    let b: Bool = zero();       // implicitly chosen variant, calls zero_b
-    let c = zero<I32>();        // explicitly chosen variant, calls zero_i
+// #print("{}", zero());    // error!
+                            // ambigious overload call
 
-    #print("{}", zero<F32>());  // calls zero_f, prints "0.0"
-}
+// let a = zero();          // error!
+                            // also an ambigious overload call
+
+let b: Bool = zero();       // implicitly chosen variant, calls zero_b
+let c = zero<I32>();        // explicitly chosen variant, calls zero_i
+
+#print("{}", zero<F32>());  // calls zero_f, prints "0.0"
 ```
 
 ## Concise declaration
@@ -68,11 +66,9 @@ ove one: {
     fun _() -> F32 { 1.0 } // anonymous function
 }
 
-fun main() {
-    let a: I32 = one(); // calls one:one_i
-    let b: F32 = one(); // calls one:anonymous_function_1
+let a: I32 = one(); // calls one:one_i
+let b: F32 = one(); // calls one:anonymous_function_1
 
-    #print("{}", a);   // prints "0"
-    #print("{}", b);   // prints "0.0"
-}
+#print("{}", a);   // prints "0"
+#print("{}", b);   // prints "0.0"
 ```
