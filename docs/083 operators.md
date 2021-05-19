@@ -43,6 +43,7 @@ fun sum_4(a: I32, b: I32, c: I32, d: I32)
 fun sum_5(a: I32, b: I32, c: I32, d: I32, e: I32) 
     -> I32 { a + b + c + d + e }
 
+
 // overload declaration for the above functions
 ove sum: {
     sum_2, sum_3, sum_4, sum_5,
@@ -54,7 +55,6 @@ ope sum: {
 }
 
 
-
 let a = sum 1 1 1;
 // the above evalates to      `= sum  (1, 1, 1);`
 // which further evaluates to `= sum_3(1, 1, 1);`
@@ -62,6 +62,7 @@ let a = sum 1 1 1;
 let b = sum 1 2 3 sum 10 40;
 // same as `= sum  (1, 2, 3, sum  (10, 40));`
 // and     `= sum_4(1, 2, 3, sum_2(10, 40));`
+
 
 #print("{}", a);   // prints "3"
 #print("{}", b);   // prints "60"

@@ -3,11 +3,10 @@
 ## Basic concepts
 
 ```rust
-con PlusOne<T> {           // concept declaration
+con PlusOne<T> {            // concept declaration
     fun plus_one(self: T) -> T;    
 }       // every implementation of this concept
-        // must implement this function
-
+        // must implement this function (method)
 
 imp PlusOne<T> for <I32> { // concept implementation
     fun plus_one(self) -> Self { // Self is type T, 
@@ -29,6 +28,7 @@ let b = a.plus_one();
 con Add<A, B, R> {
     fun add(a: A, b: B) -> R;
 }
+
 
 // I32 + Bool should return an I32,
 // which is a+1 if b is true, otherwise just a
@@ -55,6 +55,7 @@ imp Add<A, B, R> for <Bool, I32, Bool> {
 #format("{}", Add:add(true,   0)); // prints "true"
 #format("{}", Add:add(false,  0)); // prints "false"
 
+
 // let a: Bool = Add:add(35, 64);  // error!
         // can't find Add implementation for <I32, I32, Bool>
 // Add:add(35, 64);                // error!
@@ -66,5 +67,24 @@ imp Add<A, B, R> for <Bool, I32, Bool> {
 ## Default implementation
 
 ```rs
-con
+con Description<T> {
+    fun description(self: &T) -> String {
+        "No description".to_string()
+    }
+};
+
+imp Description<T> for <I32>;
+    // no imp body, so the default implementation is used
+
+imp Description<T> for <F32> {
+    fun description(&self) -> String {
+        "This is a float: " + self.to_string() + ""
+    }
+}
+
+#format("{}", 53.description());
+            // prints "No description"
+#format("{}", 23.65.description());
+            // prints "This is a float: 23.65"
+
 ```

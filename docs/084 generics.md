@@ -1,7 +1,7 @@
 
-# Templates
+# Generics
 
-## Basic templated functions
+## Basic generic functions
 
 ```rust
 // fun display<T>(a: T) {
@@ -21,11 +21,11 @@ display(3.14);      // prints "3.14"
 // it can also be written as...
 fun display(a: imp Print) {
     #print("{}", a);        // `imp Foo` type is shorthand
-};                          // for a templated function
+};                          // for a generic function
 ```
 
 
-## Advanced templated functions
+## Advanced generic functions
 
 ```rust
 fun add<A, B, R>(a: A, b: B) -> R
