@@ -42,7 +42,8 @@ let c = Color { // construction
 ```rust
 typ Counter: class {
     value: I32, // field is private
-};
+};              // (accessible only from this module)
+                // (this includes the methods below)
 
 imp Counter { // implementation block
 
@@ -51,21 +52,22 @@ imp Counter { // implementation block
     // self - the concrete object that a method operates on,
     //        always of the Self type
 
-    fun new(i: I32) -> Self { // equivalent to -> Counter
+    pub fun new(i: I32) -> Self { // equivalent to -> Counter
         Counter { value = i } // returns a new Counter
     }
 
-    fun increment_by(&$self, x: I32) { // method mutates self
+    pub fun increment_by(&$self, x: I32) { // method mutates self
         self.value += 1;
     }
 
-    fun get_value(&self) -> I32 { // method does not mutate self
+    pub fun get_value(&self) -> I32 { // method does not mutate self
         self.value
     }
 
-    fun display(self) { // method consumes self
+    pub fun display(self) { // method consumes self
         #print("{}", self.value);
     }
+    // these methods are public
 }
 
 let &counter = Counter:(10);
