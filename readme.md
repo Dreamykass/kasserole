@@ -9,4 +9,6 @@ fun main() {
 
 Don't expect anything other than just syntax exploration here!
 
-
+# compiler???
+It shall exist at <https://github.com/Dreamykass/chilimak>, but I can't guarantee it would ever get anywhere near completion.
+Chilimak really just a fun side-side-side-project (where kasserole is just a fun side-side-project).
