@@ -10,6 +10,7 @@
 - byte: `Byte`
 - unit type: `Unit`
 - no-type: `Void`
+- never type: `Never`
 
 ```rust
 let a: I16;             // uninitialized
